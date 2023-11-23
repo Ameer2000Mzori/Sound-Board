@@ -1,30 +1,31 @@
 // selecting our elements
 var buttonsWrap = document.getElementsByClassName("buttons-wrap")[0];
+var headerEl = document.getElementsByClassName("header")[0];
 // our object data
 var dataObj = [
     {
         title: "applause",
-        sound: "",
+        sound: "/sounds/Applause.m4a",
     },
     {
         title: "boo",
-        sound: "",
+        sound: "/sounds/Boo.m4a",
     },
     {
         title: "gasp",
-        sound: "",
+        sound: "/sounds/Gasp.m4a",
     },
     {
         title: "tada",
-        sound: "",
+        sound: "/sounds/Tada.m4a",
     },
     {
         title: "victory",
-        sound: "",
+        sound: "/sounds/Victory.m4a",
     },
     {
         title: "wrong",
-        sound: "",
+        sound: "/sounds/Wrong.m4a",
     },
 ];
 // our functions
@@ -44,6 +45,10 @@ var loadData = function () {
         // here is our buttons on click function
         soundBtn.addEventListener("click", function () {
             console.log(soundBtn.textContent);
+            audioEl.play();
+            if (!audioEl.paused) {
+                soundBtn.disabled = true;
+            }
         });
     });
 };

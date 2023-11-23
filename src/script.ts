@@ -2,32 +2,33 @@
 const buttonsWrap = document.getElementsByClassName(
   "buttons-wrap"
 )[0] as HTMLElement;
+const headerEl = document.getElementsByClassName("header")[0] as HTMLElement;
 
 // our object data
-const dataObj = [
+let dataObj = [
   {
     title: "applause",
-    sound: "",
+    sound: "/sounds/Applause.m4a",
   },
   {
     title: "boo",
-    sound: "",
+    sound: "/sounds/Boo.m4a",
   },
   {
     title: "gasp",
-    sound: "",
+    sound: "/sounds/Gasp.m4a",
   },
   {
     title: "tada",
-    sound: "",
+    sound: "/sounds/Tada.m4a",
   },
   {
     title: "victory",
-    sound: "",
+    sound: "/sounds/Victory.m4a",
   },
   {
     title: "wrong",
-    sound: "",
+    sound: "/sounds/Wrong.m4a",
   },
 ];
 
@@ -40,7 +41,7 @@ const loadData = (): any => {
     soundBtn.classList.add("btn");
     soundBtn.textContent = data.title;
     // creating our audio element
-    const audioEl = document.createElement("audio");
+    let audioEl = document.createElement("audio");
     audioEl.src = data.sound;
     // appnding elemtns to parents
     soundBtn.appendChild(audioEl);
@@ -48,6 +49,11 @@ const loadData = (): any => {
     // here is our buttons on click function
     soundBtn.addEventListener("click", () => {
       console.log(soundBtn.textContent);
+      audioEl.play();
+
+      if (!audioEl.paused) {
+        soundBtn.disabled = true;
+      }
     });
   });
 };
